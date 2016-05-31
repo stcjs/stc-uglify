@@ -1,2 +1,3 @@
 # stc-uglify
-Use uglify to compress JavaScript
+
+Use [UglifyJS](https://github.com/mishoo/UglifyJS2) to compress JavaScript
