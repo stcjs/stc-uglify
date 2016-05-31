@@ -1,6 +1,7 @@
 import Plugin from 'stc-plugin';
 import UglifyJS from 'uglify-js';
 import {extend} from 'stc-helper';
+//import {isMaster} from 'cluster';
 
 
 export default class UglifyJSPlugin extends Plugin {
