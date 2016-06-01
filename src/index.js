@@ -1,7 +1,8 @@
 import Plugin from 'stc-plugin';
-import UglifyJS from 'uglify-js';
 import {extend} from 'stc-helper';
 //import {isMaster} from 'cluster';
+
+let UglifyJS = null;
 
 
 export default class UglifyJSPlugin extends Plugin {
@@ -9,6 +10,10 @@ export default class UglifyJSPlugin extends Plugin {
    * run
    */
   async run(){
+    if(!UglifyJS){
+      UglifyJS = require('uglify-js');
+    }
+    
     let content = await this.getContent('utf8');
     let options = this.options;
     let ast;
