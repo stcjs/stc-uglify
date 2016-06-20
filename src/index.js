@@ -23,7 +23,11 @@ export default class UglifyJSPlugin extends Plugin {
         filename: this.file.path
       });
     }catch(e){
-      throw new Error(`Uncaught SyntaxError in file \`${this.file.path}\``);
+      return {err: {
+        message: e.message,
+        line: e.line,
+        col: e.col
+      }};
     }
     
     if(options.compress !== false) {
@@ -68,6 +72,10 @@ export default class UglifyJSPlugin extends Plugin {
    * update
    */
   update(data){
+    let {err} = data;
+    if(err){
+      return this.fatal(err.message, err.line, err.col);
+    }
     this.setContent(data.content);
   }
   /**
