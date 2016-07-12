@@ -79,6 +79,12 @@ export default class UglifyJSPlugin extends Plugin {
     this.setContent(data.content);
   }
   /**
+   * default include
+   */
+  static include(){
+    return /\.js$/i;
+  }
+  /**
    * use cluster
    */
   static cluster(){
