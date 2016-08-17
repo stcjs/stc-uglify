@@ -1,11 +1,8 @@
 import Plugin from 'stc-plugin';
 import {extend} from 'stc-helper';
-//import {isMaster} from 'cluster';
 
 let UglifyJS = null;
-
-
-export default class UglifyJSPlugin extends Plugin {
+export default class JSCompressPlugin extends Plugin {
   /**
    * run
    */
