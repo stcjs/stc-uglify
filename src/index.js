@@ -30,7 +30,7 @@ export default class JSCompressPlugin extends Plugin {
     if(options.compress !== false) {
       ast.figure_out_scope();
       // eslint-disable-line new-cap
-      let compress = UglifyJS.Compressor(options.compress || { warnings: false });
+      let compress = UglifyJS.Compressor(options.compress || { warnings: false, screw_ie8: false });
       ast = ast.transform(compress);
     }
     
