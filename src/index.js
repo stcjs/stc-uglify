@@ -30,14 +30,21 @@ export default class JSCompressPlugin extends Plugin {
     if(options.compress !== false) {
       ast.figure_out_scope();
       // eslint-disable-line new-cap
-      let compress = UglifyJS.Compressor(options.compress || { warnings: false });
+      let compress = UglifyJS.Compressor(options.compress || { 
+        warnings: false,
+        screw_ie8: false
+      });
       ast = ast.transform(compress);
     }
     
     if(options.mangle !== false) {
       ast.figure_out_scope();
-      ast.compute_char_frequency(options.mangle || {});
-      ast.mangle_names(options.mangle || {});
+      ast.compute_char_frequency(options.mangle || {
+        screw_ie8: false
+      });
+      ast.mangle_names(options.mangle || {
+        screw_ie8: false
+      });
       if(options.mangle && options.mangle.props) {
         UglifyJS.mangle_properties(ast, options.mangle.props);
       }
