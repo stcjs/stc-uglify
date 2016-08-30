@@ -23,7 +23,7 @@
   ],
   "main": "lib/index.js",
   "dependencies": {
-    "uglify-js": "^2.6.2",
+    "uglify-js": "1.3.5",
     "babel-runtime": "6.x.x",
     "stc-plugin": "1.x.x",
     "stc-helper": "1.x.x"
