@@ -10,14 +10,21 @@ export default class JSCompressPlugin extends Plugin {
     if(!UglifyJS){
       UglifyJS = require('uglify-js');
     }
-    
     let content = await this.getContent('utf8');
-    let {parser, uglify} = UglifyJS;
-    let ast = parser.parse(content); 
-    ast = uglify.ast_mangle(ast); // get a new AST with mangled names
-    ast = uglify.ast_squeeze(ast); // get an AST with compression optimizations
-    let ret = uglify.gen_code(ast); // compressed code here
-    return {content: ret};
+    try{
+      let {parser, uglify} = UglifyJS;
+      let ast = parser.parse(content); 
+      ast = uglify.ast_mangle(ast); // get a new AST with mangled names
+      ast = uglify.ast_squeeze(ast); // get an AST with compression optimizations
+      let ret = uglify.gen_code(ast); // compressed code here
+      return {content: ret};
+    } catch(e) {
+      if(this.file.prop('virtual')) {
+        e.message += (' ' + content);
+      }
+      return {err: e};
+    }
+   
   }
   /**
    * update
