@@ -25,7 +25,7 @@ stc.workflow({
 
 
 ### 支持的配置
-```
+```js
 // 详细文档参考: https://github.com/mishoo/UglifyJS
 // 部分配置需要参考代码
 {
